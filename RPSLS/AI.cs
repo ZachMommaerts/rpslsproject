@@ -10,6 +10,7 @@ namespace RPSLS
     {
 
         //Member Variables (HAS A)
+        public string gestureName;
 
         //Constructor
         public AI()
@@ -23,7 +24,25 @@ namespace RPSLS
             Random random = new Random();
             int compgesture = random.Next(1, 5);
             gesture = compgesture.ToString();
-            Console.WriteLine($"Gary chose {gesture}");
+            switch (gesture)
+            {
+                case "1":
+                    gestureName = "Rock";
+                    break;
+                case "2":
+                    gestureName = "Paper";
+                    break;
+                case "3":
+                    gestureName = "Scissors";
+                    break;
+                case "4":
+                    gestureName = "Lizard";
+                    break;
+                case "5":
+                    gestureName = "Spock";
+                    break;
+            }
+            Console.WriteLine($"Gary chose {gestureName}");
         }
     }
 }

@@ -16,7 +16,7 @@ namespace RPSLS
         string gesture;
 
         //Constructor
-        
+
         //Member Methods (CAN DO)
         public void SetNumberOfPlayers()
         {
@@ -61,19 +61,8 @@ namespace RPSLS
         }
         public void CompareGesture()
         {
-            if(playerOne.score == 2)
-            {
-                Console.WriteLine($"{playerOne.name} wins!");
-            }
-            if(playerTwo.score == 2)
-            {
-                Console.WriteLine($"{playerTwo.name} wins!");
-            }
-            while (playerOne.score < 2 || playerTwo.score < 2)
-            {
                 while (playerOne.gesture == "1")
                 {
-                    Console.WriteLine("Player 1 chose Rock");
                     if (playerOne.gesture == playerTwo.gesture)
                     {
                         Console.WriteLine("Draw! Choose Again!");
@@ -81,20 +70,19 @@ namespace RPSLS
                     }
                     if (playerTwo.gesture == "3" || playerTwo.gesture == "4")
                     {
-                        Console.WriteLine("Player 1 earns a point!");
+                        Console.WriteLine($"{playerOne.name} earns a point!");
                         playerOne.score++;
                         break;
                     }
                     if (playerTwo.gesture == "2" || playerTwo.gesture == "5")
                     {
-                        Console.WriteLine("Player 2 earns a point!");
+                        Console.WriteLine($"{playerTwo.name} earns a point!");
                         playerTwo.score++;
                         break;
                     }
                 }
                 while (playerOne.gesture == "2")
                 {
-                    Console.WriteLine("Player 1 chose Paper");
                     if (playerOne.gesture == playerTwo.gesture)
                     {
                         Console.WriteLine("Draw! Choose Again!");
@@ -102,20 +90,19 @@ namespace RPSLS
                     }
                     if (playerTwo.gesture == "1" || playerTwo.gesture == "5")
                     {
-                        Console.WriteLine("Player 1 earns a point!");
+                        Console.WriteLine($"{playerOne.name} earns a point!");
                         playerOne.score++;
                         break;
                     }
                     if (playerTwo.gesture == "3" || playerTwo.gesture == "4")
                     {
-                        Console.WriteLine("Player 2 earns a point!");
+                        Console.WriteLine($"{playerTwo.name} earns a point!");
                         playerTwo.score++;
                         break;
                     }
                 }
                 while (playerOne.gesture == "3")
                 {
-                    Console.WriteLine("Player 1 chose Scissors");
                     if (playerOne.gesture == playerTwo.gesture)
                     {
                         Console.WriteLine("Draw! Choose Again!");
@@ -123,20 +110,19 @@ namespace RPSLS
                     }
                     if (playerTwo.gesture == "2" || playerTwo.gesture == "4")
                     {
-                        Console.WriteLine("Player 1 earns a point!");
+                        Console.WriteLine($"{playerOne.name} earns a point!");
                         playerOne.score++;
                         break;
                     }
                     if (playerTwo.gesture == "1" || playerTwo.gesture == "5")
                     {
-                        Console.WriteLine("Player 2 earns a point!");
+                        Console.WriteLine($"{playerTwo.name} earns a point!");
                         playerTwo.score++;
                         break;
                     }
                 }
                 while (playerOne.gesture == "4")
                 {
-                    Console.WriteLine("Player 1 chose Lizard");
                     if (playerOne.gesture == playerTwo.gesture)
                     {
                         Console.WriteLine("Draw! Choose Again!");
@@ -144,20 +130,19 @@ namespace RPSLS
                     }
                     if (playerTwo.gesture == "2" || playerTwo.gesture == "5")
                     {
-                        Console.WriteLine("Player 1 earns a point!");
+                        Console.WriteLine($"{playerOne.name} earns a point!");
                         playerOne.score++;
                         break;
                     }
                     if (playerTwo.gesture == "1" || playerTwo.gesture == "3")
                     {
-                        Console.WriteLine("Player 2 earns a point!");
+                        Console.WriteLine($"{playerTwo.name} earns a point!");
                         playerTwo.score++;
                         break;
                     }
                 }
                 while (playerOne.gesture == "5")
                 {
-                    Console.WriteLine("Player 1 chose Spock");
                     if (playerOne.gesture == playerTwo.gesture)
                     {
                         Console.WriteLine("Draw! Choose Again!");
@@ -165,26 +150,43 @@ namespace RPSLS
                     }
                     if (playerTwo.gesture == "1" || playerTwo.gesture == "3")
                     {
-                        Console.WriteLine("Player 1 earns a point!");
+                        Console.WriteLine($"{playerOne.name} earns a point!");
                         playerOne.score++;
                         break;
                     }
                     if (playerTwo.gesture == "2" || playerTwo.gesture == "4")
                     {
-                        Console.WriteLine("Player 2 earns a point!");
+                        Console.WriteLine($"{playerTwo.name} earns a point!");
                         playerTwo.score++;
                         break;
                     }
                 }
+        }
+        public void DecideWinner()
+        {
+            if (playerOne.score == 2)
+            {
+                Console.WriteLine($"{playerOne.name} wins!");
+                Console.ReadLine();
+
+            }
+            else if (playerTwo.score == 2)
+            {
+                Console.WriteLine($"{playerTwo.name} wins!");
+                Console.ReadLine();
             }
         }
         public void RunGame()
         {
             Console.WriteLine("Welcome to Rock Paper Scissors Lizard Spock!");
             CheckingForRule();
-            playerOne.ChooseGesture();
-            playerTwo.ChooseGesture();
-            CompareGesture();
+            while (playerOne.score < 2 && playerTwo.score < 2)
+            {
+                playerOne.ChooseGesture();
+                playerTwo.ChooseGesture();
+                CompareGesture();
+            }
+            DecideWinner();
         }
     }
 }
