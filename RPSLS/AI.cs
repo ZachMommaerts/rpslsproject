@@ -12,9 +12,18 @@ namespace RPSLS
         //Member Variables (HAS A)
 
         //Constructor
+        public AI()
+        {
+            name = "Gary";
+        }
 
         //Member Methods (CAN DO)
-
-
-     }
+        public override void ChooseGesture()
+        {
+            Random random = new Random();
+            int compgesture = random.Next(1, 5);
+            gesture = compgesture.ToString();
+            Console.WriteLine($"Gary chose {gesture}");
+        }
+    }
 }
